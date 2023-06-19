@@ -5,38 +5,43 @@ import { useRoute, useRouter } from 'vue-router'
 const active = ref('/home')
 const route = useRoute()
 const router = useRouter()
-const navigationList = [{
+
+const tabbarList = [{
   name: '/home',
   label: '主页',
-  icon: 'home',
+  icon: 'home-o',
 }, {
   name: '/about',
   label: '关于',
-  icon: 'heart',
+  icon: 'search',
 }, {
   name: '/my',
   label: '我的',
-  icon: 'account-circle',
+  icon: 'friends-o',
 }]
-onMounted(() => {
-  active.value = route.path
-})
-function onNavChange(path: string) {
+
+function onChange(path: string) {
   router.push({
     path,
   })
 }
+
+onMounted(() => {
+  active.value = route.path
+})
 </script>
 
 <template>
   <div class="wrapper">
     <router-view class="container" />
-    <var-bottom-navigation v-model:active="active" @change="onNavChange">
-      <var-bottom-navigation-item
-        v-for="(item, index) in navigationList" :key="index" :name="item.name"
-        :label="item.label" :icon="item.icon"
-      />
-    </var-bottom-navigation>
+    <van-tabbar v-model="active" fixed placeholder @change="onChange">
+      <van-tabbar-item
+        v-for="(item, index) in tabbarList" :key="index" :name="item.name"
+        :icon="item.icon"
+      >
+        {{ item.label }}
+      </van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 

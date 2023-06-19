@@ -1,9 +1,6 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const date = ref('2021-04-08')
+<script lang="ts" setup>
 </script>
 
 <template>
-  <var-date-picker v-model="date" />
+  <div>my</div>
 </template>
