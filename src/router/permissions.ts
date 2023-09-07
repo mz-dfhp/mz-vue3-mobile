@@ -5,6 +5,7 @@ import 'nprogress/nprogress.css'
 
 export function createRouterPermissions(router: Router) {
   router.beforeEach(async (to, _from, next) => {
+    NProgress.start()
     to.meta.title && (document.title = to.meta.title as string)
     next()
   })

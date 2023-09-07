@@ -90,7 +90,7 @@ function asyncBeforeRead(files: File | File[]) {
 }
 
 async function afterRead(files: UploaderFileListItem[]) {
-  const cloneFileList = Array.isArray(files) ? files.map(item => ({ ...item })) : [{ ...files }]
+  const cloneFileList = files.map(item => ({ ...item }))
   const list = cloneFileList.map((file, index) => {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {

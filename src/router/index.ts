@@ -7,7 +7,44 @@ import type { RouteRecordRaw } from 'vue-router'
 import type { App } from 'vue'
 import { createRouterPermissions } from './permissions'
 
+export const tabbarRoutes: RouteRecordRaw[] = [
+  {
+    path: '/home',
+    name: 'home',
+    component: () => import('@/views/home/index.vue'),
+    meta: {
+      title: '首页',
+      icon: 'home-o',
+    },
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: () => import('@/views/about/index.vue'),
+    meta: {
+      title: '关于',
+      icon: 'search',
+    },
+  },
+  {
+    path: '/my',
+    name: 'my',
+    component: () => import('@/views/my/index.vue'),
+    meta: {
+      title: '我的',
+      icon: 'friends-o',
+    },
+  },
+]
+
+export const tabbarRoutesPathList = tabbarRoutes.map(item => item.path)
+
 const routes: RouteRecordRaw[] = [
+  {
+    path: '/',
+    name: '/',
+    redirect: '/home',
+  },
   {
     path: '/login',
     name: 'Login',
@@ -16,38 +53,7 @@ const routes: RouteRecordRaw[] = [
       title: '登录',
     },
   },
-  {
-    path: '/',
-    name: '/',
-    component: () => import('@/views/index/index.vue'),
-    redirect: '/home',
-    children: [
-      {
-        path: 'home',
-        name: 'home',
-        component: () => import('@/views/home/index.vue'),
-        meta: {
-          title: '首页',
-        },
-      },
-      {
-        path: 'about',
-        name: 'about',
-        component: () => import('@/views/about/index.vue'),
-        meta: {
-          title: '关于',
-        },
-      },
-      {
-        path: 'my',
-        name: 'my',
-        component: () => import('@/views/my/index.vue'),
-        meta: {
-          title: '我的',
-        },
-      },
-    ],
-  },
+  ...tabbarRoutes,
 ]
 
 const router = createRouter({
@@ -57,6 +63,7 @@ const router = createRouter({
       : createWebHistory(),
   routes,
 })
+
 createRouterPermissions(router)
 
 export function setupRouter(app: App<Element>) {
