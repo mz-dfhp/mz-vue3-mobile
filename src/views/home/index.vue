@@ -1,14 +1,32 @@
 <script lang="ts" setup>
-import { reactive } from 'vue'
-import UploadImgs from '@/components/UploadImgs/index.vue'
+import { useRouter } from 'vue-router'
 
-const formState = reactive({
-  fileStr: '',
-})
+const router = useRouter()
+
+function goComponent() {
+  router.push('/component')
+}
 </script>
 
 <template>
-  <div style="padding:20px">
-    <UploadImgs v-model:file-str="formState.fileStr" />
+  <div style="height: 100%;background: chocolate;padding: 20px;display: flex;gap: 20px;flex-wrap: wrap;">
+    <van-button type="primary">
+      主要按钮
+    </van-button>
+    <van-button type="success">
+      成功按钮
+    </van-button>
+    <van-button type="default">
+      默认按钮
+    </van-button>
+    <van-button type="warning">
+      警告按钮
+    </van-button>
+    <van-button type="danger">
+      危险按钮
+    </van-button>
+    <van-button type="danger" @click="goComponent()">
+      详情
+    </van-button>
   </div>
 </template>

@@ -5,7 +5,7 @@ import store from '@/store'
 export interface ISettings {
   theme: 'light' | 'dark'
   themeColor: string
-  transitionName: 'fade' | 'slide-fade' | 'zoom' | 'fade-transform'
+  transitionName: 'enter-slide' | 'slide-back' | 'none'
 }
 const pid = 'STORE__SETTING'
 
@@ -24,7 +24,7 @@ export const settingStore = defineStore(
       themeColor.value = name
     }
 
-    const transitionName = ref<ISettings['transitionName']>('fade-transform')
+    const transitionName = ref<ISettings['transitionName']>('none')
     const getTransitionName = computed(() => transitionName.value)
     function setTransitionName(name: ISettings['transitionName']) {
       transitionName.value = name

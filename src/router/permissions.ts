@@ -3,10 +3,14 @@ import NProgress from 'nprogress'
 import { keepAliveStore } from '@/store/keepAlive'
 import 'nprogress/nprogress.css'
 
+function setDocumentTitle(title?: string) {
+  title && (document.title = title as string)
+}
+
 export function createRouterPermissions(router: Router) {
   router.beforeEach(async (to, _from, next) => {
     NProgress.start()
-    to.meta.title && (document.title = to.meta.title as string)
+    setDocumentTitle(to.meta.title)
     next()
   })
 

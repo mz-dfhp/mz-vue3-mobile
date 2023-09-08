@@ -6,6 +6,7 @@ import {
 import type { RouteRecordRaw } from 'vue-router'
 import type { App } from 'vue'
 import { createRouterPermissions } from './permissions'
+import { extensionRouter } from './extensionRouter'
 
 export const tabbarRoutes: RouteRecordRaw[] = [
   {
@@ -53,6 +54,14 @@ const routes: RouteRecordRaw[] = [
       title: '登录',
     },
   },
+  {
+    path: '/component',
+    name: 'Component',
+    component: () => import('@/views/home/component.vue'),
+    meta: {
+      title: '组件',
+    },
+  },
   ...tabbarRoutes,
 ]
 
@@ -64,6 +73,7 @@ const router = createRouter({
   routes,
 })
 
+extensionRouter(router)
 createRouterPermissions(router)
 
 export function setupRouter(app: App<Element>) {
