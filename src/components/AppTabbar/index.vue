@@ -22,9 +22,9 @@ onMounted(() => {
   <van-tabbar v-model="active" fixed placeholder @change="onChange">
     <van-tabbar-item
       v-for="(item, index) in tabbarRoutes" :key="index" :name="item.path"
-      :icon="item.meta.icon"
+      :icon="item.meta?.icon"
     >
-      {{ item.meta.title }}
+      {{ item.meta?.title }}
     </van-tabbar-item>
   </van-tabbar>
 </template>
