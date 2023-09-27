@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div style="height: 100%;width: 100%;background: sandybrown;padding: 20px;display: flex;gap: 20px;flex-wrap: wrap;">
+  <div class="page-wrapper" style="background: sandybrown;padding: 20px;display: flex;gap: 20px;flex-wrap: wrap;">
     <van-button type="primary">
       主要按钮
     </van-button>

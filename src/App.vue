@@ -13,24 +13,26 @@ const { theme, transitionName } = storeToRefs(settingStore())
 <template>
   <van-config-provider
     :theme="theme" :theme-vars="{ primaryColor: '#646cff' }" theme-vars-scope="global"
-    style="height: 100%;width: 100%;"
+    style="overflow-x: hidden;"
   >
     <router-view v-slot="{ Component, route }">
       <van-nav-bar
-        placeholder
-        :title="route.meta.title"
+        fixed placeholder :title="route.meta.title"
         style="--van-nav-bar-background: var(--van-primary-color);"
       >
         <template v-if="!tabbarRoutesPathList.includes(route.path)" #left>
           <van-icon name="arrow-left" color="#fff" size="28" @click="router.back()" />
         </template>
         <template #right>
-          <van-icon name="exchange" color="#fff" size="28" @click="settingStore().setTheme(theme === 'dark' ? 'light' : 'dark')" />
+          <van-icon
+            name="exchange" color="#fff" size="28"
+            @click="settingStore().setTheme(theme === 'dark' ? 'light' : 'dark')"
+          />
         </template>
       </van-nav-bar>
-      <transition :name="transitionName">
+      <transition :name="transitionName" appear>
         <keep-alive :include="keepList">
-          <component :is="Component" :key="route.fullPath" style="position: fixed;" />
+          <component :is="Component" :key="route.fullPath" />
         </keep-alive>
       </transition>
       <app-tabbar v-if="tabbarRoutesPathList.includes(route.path)" />
@@ -43,16 +45,19 @@ const { theme, transitionName } = storeToRefs(settingStore())
   transition: all 0.4s ease;
   z-index: 1;
 }
-.enter-slide-enter-from{
+
+.enter-slide-enter-from {
   transform: translateX(100%);
 }
 
-.enter-slide-leave-active{
+.enter-slide-leave-active {
+  position: fixed;
   transition: all 0.4s;
   z-index: 0;
 }
 
 .slide-back-leave-active {
+  position: fixed;
   transform: translateX(100%);
   transition: all 0.4s ease;
   z-index: 1;

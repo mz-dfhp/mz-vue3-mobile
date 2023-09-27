@@ -8,7 +8,7 @@ const formState = reactive({
 </script>
 
 <template>
-  <div style="height: 100%;width: 100%;padding:20px;background: rgb(97, 18, 109);">
+  <div class="page-wrapper" style="padding:20px;background: rgb(97, 18, 109);">
     <UploadImgs v-model:file-str="formState.fileStr" />
   </div>
 </template>

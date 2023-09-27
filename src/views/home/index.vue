@@ -9,7 +9,7 @@ function goComponent() {
 </script>
 
 <template>
-  <div style="height: 100%;background: chocolate;padding: 20px;display: flex;gap: 20px;flex-wrap: wrap;">
+  <div class="page-wrapper" style="background: chocolate;padding: 20px;display: flex;gap: 20px;flex-wrap: wrap;">
     <van-button type="primary">
       主要按钮
     </van-button>
@@ -28,5 +28,6 @@ function goComponent() {
     <van-button type="danger" @click="goComponent()">
       详情
     </van-button>
+    <div style="height: 90vh;background: pink;width: 100%;" />
   </div>
 </template>
