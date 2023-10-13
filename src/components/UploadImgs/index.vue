@@ -2,6 +2,8 @@
 import { showImagePreview, showToast } from 'vant'
 import type { UploaderAfterRead, UploaderFileListItem } from 'vant/lib/uploader/types'
 import { computed, ref, watch } from 'vue'
+import addFileImg from '@/assets/images/common/add-file.png'
+import removeFileImg from '@/assets/images/common/remove-file.png'
 
 interface UploadFileProps {
   fileStr: string // 上传的文件
@@ -196,13 +198,13 @@ watch(() => props.fileStr, (value) => {
           </template>
         </template>
         <div class="delete-box" @click.stop="handleRemove(url)">
-          <van-icon name="../../src/assets/images/common/remove-file.png" size="4.5vw" />
+          <van-icon :name="removeFileImg" size="4.5vw" />
         </div>
       </template>
       <div class="upload-empty">
         <slot name="empty">
           <div class="empty-box">
-            <van-icon name="../../src/assets/images/common/add-file.png" size="4vw" />
+            <van-icon :name="addFileImg" size="4vw" />
             <div class="empty-text">
               {{ emptyTitle }}
             </div>
