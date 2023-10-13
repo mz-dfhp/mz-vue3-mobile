@@ -10,6 +10,7 @@ declare module 'vue' {
     AppTabbar: typeof import('./src/components/AppTabbar/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Upload: typeof import('./src/components/Upload/index.vue')['default']
     UploadImgs: typeof import('./src/components/UploadImgs/index.vue')['default']
     VanButton: typeof import('vant/es')['Button']
     VanConfigProvider: typeof import('vant/es')['ConfigProvider']

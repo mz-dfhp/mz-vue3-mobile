@@ -18,6 +18,7 @@ const { theme, transitionName } = storeToRefs(settingStore())
     <router-view v-slot="{ Component, route }">
       <van-nav-bar
         fixed placeholder :title="route.meta.title"
+        z-index="9"
         style="--van-nav-bar-background: var(--van-primary-color);"
       >
         <template v-if="!tabbarRoutesPathList.includes(route.path)" #left>

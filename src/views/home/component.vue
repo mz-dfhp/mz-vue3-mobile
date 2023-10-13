@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { reactive } from 'vue'
-import UploadImgs from '@/components/UploadImgs/index.vue'
 
 const formState = reactive({
   fileStr: '',
@@ -8,7 +7,10 @@ const formState = reactive({
 </script>
 
 <template>
-  <div class="page-wrapper" style="padding:20px;background: rgb(97, 18, 109);">
-    <UploadImgs v-model:file-str="formState.fileStr" />
+  <div class="page-wrapper" style="background: rgb(97, 18, 109);padding: 20px;display: flex;gap: 20px;flex-wrap: wrap;">
+    <Upload v-model="formState.fileStr" accept="image/*" />
+    <Upload v-model="formState.fileStr" accept="image/*,video/*" />
+    <Upload v-model="formState.fileStr" accept="video/*" />
+    <Upload v-model="formState.fileStr" accept=".txt" />
   </div>
 </template>
